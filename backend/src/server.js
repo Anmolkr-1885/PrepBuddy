@@ -2,7 +2,6 @@ import express from "express"
 import path from "path"
 import {ENV} from "./lib/env.js";
 
-console.log(ENV.PORT);
 
 const app = express();
 
@@ -26,6 +25,8 @@ if(ENV.NODE_ENV=="production"){
 
 
 
-app.listen(3000,()=>{
-    console.log("server is running on port 3000");
-})
+const PORT = ENV.PORT || 3000;
+
+app.listen(PORT, () => {
+    console.log(`server is running on port ${PORT}`);
+});
