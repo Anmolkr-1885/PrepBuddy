@@ -39,6 +39,9 @@ app.get("/books",(req,res)=>{
 })
 
 app.post("/api/execute", async (req, res) => {
+  // console.log("request is coming in backend")
+
+  
   try {
     const { language, code, stdin } = req.body;
 
@@ -60,8 +63,8 @@ app.post("/api/execute", async (req, res) => {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        clientId: process.env.JDOODLE_CLIENT_ID,
-        clientSecret: process.env.JDOODLE_CLIENT_SECRET,
+        clientId: ENV.JDOODLE_CLIENT_ID,
+        clientSecret: ENV.JDOODLE_CLIENT_SECRET,
         script: code,
         language: langConfig.language,
         versionIndex: langConfig.versionIndex,
